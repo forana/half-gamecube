@@ -1,5 +1,5 @@
-postSideShort = 2;
-postSideLong = 3;
+postSideShort = 2.1;
+postSideLong = 3.1;
 postDepth = 3;
 
 buttonLid = 1;

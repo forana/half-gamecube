@@ -1,4 +1,4 @@
-include <measurements.scad>;
+include <pi-measurements.scad>;
 
 baseThickness = 1;
 baseFrameWidth = piScrewHoleInset * 2;
