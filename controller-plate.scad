@@ -19,7 +19,7 @@ module frontPlateMemoryCutout() {
     }
 }
 
-module frontPlate(standoffDepth = 1, ) {
+module frontPlate(standoffDepth = 1) {
     $fn = 360;
     id = standoffDepth + gcMountingPlateSlotThickness;
     difference() {

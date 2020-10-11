@@ -18,6 +18,7 @@ gcFanNubArcHeight = 4.5 / 2;
 gcFanNubArcRadius = 120 / 2;
 gcFanGridWidth = 54 / 2;
 gcFanPlateWidth = gcFanGridWidth + 6;
+gcFanBeamWidth = 1.5;
 
 gcFrontPlateArcDepth = 5.3 / 2;
 gcFrontPlateArcRadius = 120 / 2;
