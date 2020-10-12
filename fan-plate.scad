@@ -21,7 +21,7 @@ module fanPlate() {
         for (i=[1:3]) {
             translate([gcFanGridWidth/4*i - gcFanBeamWidth/2, 0, 0])
                 cube([gcFanBeamWidth, gcFanGridWidth, thickness]);
-            translate([0, gcFanGridWidth/4*i - gcFanBeamWidth/2, 0])
+            translate([0, gcFanGridWidth/4*i - gcFanBeamWidth, 0])
                 cube([gcFanGridWidth, gcFanBeamWidth, thickness]);
         }
     }

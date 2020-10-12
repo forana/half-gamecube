@@ -9,7 +9,7 @@ module shell() {
     difference() {
         intersection() {
             roundedCube(gcWidth, gcHeight, gcDepth, gcCaseR, includeZ = true);
-            cube([gcWidth, gcHeight, baseHeight]);
+            cube([gcWidth, gcHeight, baseHeight + wr]);
         };
         translate([gcWallThickness, gcWallThickness, gcBaseThickness])
             cube([gcWidth - 2*gcWallThickness, gcHeight - 2*gcWallThickness, gcDepth]);
@@ -18,8 +18,8 @@ module shell() {
 
 module frontPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth/2, 0, 0])
-            cube([gcFrontPlateWidth + gcMountingPlateSlotWidth + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
+        translate([-gcMountingPlateSlotWidth, 0, 0])
+            cube([gcFrontPlateWidth + gcMountingPlateSlotWidth*2 + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
         translate([0, 0, -gcWallThickness])
             cube([gcFrontPlateWidth + wr, baseHeight, 2*gcWallThickness]);
     }
@@ -27,8 +27,8 @@ module frontPlateCutout() {
 
 module fanPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth/2, 0, 0])
-            cube([gcFanPlateWidth + gcMountingPlateSlotWidth + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
+        translate([-gcMountingPlateSlotWidth, 0, 0])
+            cube([gcFanPlateWidth + gcMountingPlateSlotWidth*2 + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
         translate([0, 0, -gcWallThickness])
             cube([gcFanPlateWidth + wr, baseHeight, 2*gcWallThickness]);
     }
@@ -36,8 +36,8 @@ module fanPlateCutout() {
 
 module rearPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth/2, 0, 0])
-            cube([gcRearPlateWidth + gcMountingPlateSlotWidth + wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
+        translate([-gcMountingPlateSlotWidth, 0, 0])
+            cube([gcRearPlateWidth + gcMountingPlateSlotWidth*2 + wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
         translate([0, 0, -gcWallThickness])
             cube([gcRearPlateWidth + wr, gcRearPlateHeight, 2*gcWallThickness]);
     }
@@ -73,9 +73,17 @@ module gamecubeBase() {
         // peg holes
         translate([gcWallThickness/2, gcWallThickness/2, baseHeight])
             pegHole();
+        translate([gcWallThickness/2, gcHeight/5 - gcWallThickness/2, baseHeight])
+            pegHole();
+        translate([gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, baseHeight])
+            pegHole();
         translate([gcWallThickness/2, gcHeight - gcWallThickness/2*3, baseHeight])
             pegHole();
         translate([gcWidth - gcWallThickness/2, gcWallThickness/2, baseHeight])
+            pegHole();
+        translate([gcWidth - gcWallThickness/2, gcHeight/5 - gcWallThickness/2, baseHeight])
+            pegHole();
+        translate([gcWidth - gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, baseHeight])
             pegHole();
         translate([gcWidth - gcWallThickness/2, gcHeight - gcWallThickness/2*3, baseHeight])
             pegHole();
