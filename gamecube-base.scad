@@ -2,7 +2,7 @@ include <gamecube-measurements.scad>
 use <common.scad>
 
 baseHeight = gcBaseDepth + gcFrontPlateHeight;
-wr = 0.1; // wiggle room
+wr = 0.4; // wiggle room
 hwr = wr/2;
 
 module shell() {
@@ -18,27 +18,27 @@ module shell() {
 
 module frontPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth, 0, 0])
-            cube([gcFrontPlateWidth + gcMountingPlateSlotWidth*2 + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
-        translate([0, 0, -gcWallThickness])
+        translate([-gcMountingPlateSlotWidth-wr, 0, 0])
+            cube([gcFrontPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, baseHeight, gcMountingPlateSlotThickness + wr]);
+        translate([-hwr, 0, -gcWallThickness])
             cube([gcFrontPlateWidth + wr, baseHeight, 2*gcWallThickness]);
     }
 }
 
 module fanPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth, 0, 0])
-            cube([gcFanPlateWidth + gcMountingPlateSlotWidth*2 + wr, baseHeight, gcMountingPlateSlotThickness + wr]);
-        translate([0, 0, -gcWallThickness])
+        translate([-gcMountingPlateSlotWidth-wr, 0, 0])
+            cube([gcFanPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, baseHeight, gcMountingPlateSlotThickness + wr]);
+        translate([hwr, 0, -gcWallThickness])
             cube([gcFanPlateWidth + wr, baseHeight, 2*gcWallThickness]);
     }
 }
 
 module rearPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth, 0, 0])
-            cube([gcRearPlateWidth + gcMountingPlateSlotWidth*2 + wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
-        translate([0, 0, -gcWallThickness])
+        translate([-gcMountingPlateSlotWidth-wr, 0, 0])
+            cube([gcRearPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
+        translate([-hwr, 0, -gcWallThickness])
             cube([gcRearPlateWidth + wr, gcRearPlateHeight, 2*gcWallThickness]);
     }
 }
@@ -61,6 +61,7 @@ module gamecubeBase() {
             rotate([0, 0, 90])
                 rotate([90, 0, 0])
                     fanPlateCutout();
+        // front
         translate([gcWidth - gcMountingPlateSlotThickness, gcHeight/2-gcFanPlateWidth/2, gcBaseDepth])
             mirror([1, 0, 0])
                 rotate([0, 0, 90])

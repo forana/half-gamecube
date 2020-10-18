@@ -1,10 +1,20 @@
 include <gamecube-measurements.scad>
+use <common.scad>
 
 gcFanPlateHeight = gcFrontPlateHeight;
 $fn = 360;
 thickness = 2;
 
-module fanPlate() {
+fanWidth = 30;
+fanThickness = 10.5;
+fanPegLength = fanThickness + 1.5;
+fanHoleDiameter = 3;
+fanPegDiameter = fanHoleDiameter - 0.2;
+fanHoleInset = 1.25;
+pegSlotWidth = 0.8;
+pegSlotDepth = 5;
+
+module fanGrid() {
     // mounting plate
     // frame
     difference() {
@@ -35,4 +45,29 @@ module fanPlate() {
         }
 }
 
-color("MediumPurple") fanPlate();
+
+module fanClip() {
+    translate([gcFanPlateWidth/2, gcFanPlateHeight/2, -fanPegLength]) union() {
+        for (i=[-1:2:1]) {
+            for (j=[-1:2:1]) {
+                translate([i*(fanWidth/2-fanHoleInset-fanHoleDiameter/2), j*(fanWidth/2-fanHoleInset-fanHoleDiameter/2)]) difference() {
+                    union() {
+                        cylinder(d=fanPegDiameter, h=fanPegLength + 1);
+                        cylinder(d2=fanHoleDiameter + 0.1, d1=fanPegDiameter, h=1);
+                    };
+                    translate([-pegSlotWidth/2, -10, -pegSlotWidth/2])
+                        roundedCube(pegSlotWidth, 20, pegSlotDepth+pegSlotWidth, pegSlotWidth/2-0.01, includeZ=true);
+                }
+            }
+        }
+    }
+}
+
+module fanPlate(pegs=true) {
+    fanGrid();
+    if (pegs) {
+        fanClip();
+    }
+}
+
+color("MediumPurple") fanPlate(pegs=false);

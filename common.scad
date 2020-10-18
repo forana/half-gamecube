@@ -16,3 +16,5 @@ module roundedCube(w, h, d, r, includeZ = false) {
         }
     }
 }
+
+roundedCube(1,2,3,0.1, includeZ=true);

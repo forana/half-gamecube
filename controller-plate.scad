@@ -35,6 +35,9 @@ module frontPlate(standoffDepth = 1) {
                             cylinder(r = gcFrontPlateArcRadius, h = gcFrontPlateWidth);
                 };
         }
+        // underslot (?)
+        translate([gcMountingPlateSlotWidth, gcMountingPlateSlotWidth, -0.1])
+            cube([gcFrontPlateWidth - 2*gcMountingPlateSlotWidth, gcFrontPlateHeight - 2*gcMountingPlateSlotWidth, id + 0.1]);
         // holes
         translate([gcFrontPlateWidth/2 - (gcFrontPlateHoleSpacing + gcFrontPlateHoleDiameter)/2, gcFrontPlateHeight/8*5, -0.1])
             cylinder(d = gcFrontPlateHoleDiameter, h = gcFrontPlateArcDepth + id + 0.2);
