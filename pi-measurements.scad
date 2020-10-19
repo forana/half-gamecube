@@ -38,17 +38,17 @@ piUSBHeight = 7.8;
 piUSBStickout = 2.1;
 piUSBStickin = 12;
 
-module piModel3APlus(slotEnlargement = 0) {
+module piModel3APlus(ww=0, wl=0) {
     color("LightGreen")
         cube([piBoardWidth, piBoardHeight, piBoardThickness]);
     color("Silver") union() {
         translate([0, 0, piBoardThickness]) {
-            translate([piPowerInset, -piPowerStickout, 0])
-                cube([piPowerWidth, piPowerStickin+piPowerStickout, piPowerHeight]);
-            translate([piHDMIInset, -piHDMIStickout, 0])
-                cube([piHDMIWidth, piHDMIStickin+piHDMIStickout, piHDMIHeight]);
-            translate([piAudioInset, -piAudioStickout, 0])
-                cube([piAudioWidth, piAudioStickin+piAudioStickout, piAudioHeight]);
+            translate([piPowerInset-ww, -piPowerStickout-wl, -ww])
+                cube([piPowerWidth+2*ww, piPowerStickin+piPowerStickout+wl, piPowerHeight+2*ww]);
+            translate([piHDMIInset-ww, -piHDMIStickout-wl, -ww])
+                cube([piHDMIWidth+2*ww, piHDMIStickin+piHDMIStickout+wl, piHDMIHeight+2*ww]);
+            translate([piAudioInset-ww, -piAudioStickout-wl, -ww])
+                cube([piAudioWidth+2*ww, piAudioStickin+piAudioStickout+wl, piAudioHeight+2*ww]);
             translate([piBoardWidth-piUSBStickin, piUSBInset, 0])
                 cube([piUSBStickin + piUSBStickout, piUSBWidth, piUSBHeight]);
         }
@@ -57,4 +57,4 @@ module piModel3APlus(slotEnlargement = 0) {
     }
 }
 
-//piModel3APlus();
+piModel3APlus(ww=2, wl=10);

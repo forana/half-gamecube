@@ -13,5 +13,5 @@ translate([0, 0, gcBaseDepth]) {
             color("MediumPurple") fanPlate(pegs=false);
     translate([gcWidth-2, gcHeight/2 - gcFanPlateWidth/2, 0])
         rotate([90, 0, 90])
-            color("MediumPurple") fanPlate(pegs=true);
+            color("MediumPurple") fanPlate(pegs=false);
 }
