@@ -17,7 +17,7 @@ module shell() {
 }
 
 module frontPlateCutout() {
-    translate([-hwr, 0, -hwr]) union() {
+    translate([-wr, 0, -hwr]) union() {
         translate([-gcMountingPlateSlotWidth-wr, 0, 0])
             cube([gcFrontPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, baseHeight, gcMountingPlateSlotThickness + wr]);
         translate([-hwr, 0, -gcWallThickness])
@@ -26,8 +26,8 @@ module frontPlateCutout() {
 }
 
 module fanPlateCutout() {
-    translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth-wr, 0, 0])
+    translate([-wr, 0, -hwr]) union() {
+        translate([-gcMountingPlateSlotWidth, 0, 0])
             cube([gcFanPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, baseHeight, gcMountingPlateSlotThickness + wr]);
         translate([hwr, 0, -gcWallThickness])
             cube([gcFanPlateWidth + wr, baseHeight, 2*gcWallThickness]);
@@ -36,9 +36,9 @@ module fanPlateCutout() {
 
 module rearPlateCutout() {
     translate([-hwr, 0, -hwr]) union() {
-        translate([-gcMountingPlateSlotWidth-wr, 0, 0])
-            cube([gcRearPlateWidth + gcMountingPlateSlotWidth*2 + 2*wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
-        translate([-hwr, 0, -gcWallThickness])
+        translate([-gcMountingPlateSlotWidth, 0, 0])
+            cube([gcRearPlateWidth + gcMountingPlateSlotWidth*2 + wr, gcRearPlateHeight, gcMountingPlateSlotThickness + wr]);
+        translate([0, 0, -gcWallThickness-wr])
             cube([gcRearPlateWidth + wr, gcRearPlateHeight, 2*gcWallThickness]);
     }
 }
@@ -46,7 +46,7 @@ module rearPlateCutout() {
 module pegHole() {
     $fn=64;
     translate([0, 0, -gcMountingPegHeight-hwr])
-        cylinder(d=gcMountingPegDiameter +wr, h = gcMountingPegHeight*2 + wr);
+        cylinder(d=gcMountingPegDiameter+hwr, h = gcMountingPegHeight*2 + wr);
 }
 
 module gamecubeBase() {
