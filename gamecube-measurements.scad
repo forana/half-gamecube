@@ -38,5 +38,12 @@ gcMemoryInsetY = 9.2 / 2;
 gcRearPlateWidth = gcWidth - 6;
 gcRearPlateHeight = 94.5 / 2;
 gcRearPlateInsetY = 5.6 / 2;
+gcRearPlateStickout = 5 / 2;
+
+gcHandleWidth = 10 / 2;
+gcHandleHeight = 25 / 2;
+gcHandleRadius = 68 / 2;
+gcHandleDistance = 100 / 2;
+gcHandleStickout = 35 / 2;
 
 //cube([gcWidth, gcHeight, gcDepth]);
