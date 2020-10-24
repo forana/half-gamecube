@@ -1,3 +1,5 @@
+include <common.scad>
+
 piBoardWidth = 65;
 piBoardHeight = 56;
 piBoardThickness = 1.5;
@@ -28,19 +30,30 @@ piPowerStickin = 4;
 piSDInset = 21.8;
 piSDWidth = 12.1;
 piSDHeight = 1.3;
-piSDStickout = 2.5;
+piSDStickout = 2.6;
 piSDStickin = 13;
 
 // starting from corner closest to audio
 piUSBInset = 23.5;
 piUSBWidth = 15;
 piUSBHeight = 7.8;
-piUSBStickout = 2.1;
+piUSBStickout = 2.6;
 piUSBStickin = 12;
 
 module piModel3APlus(ww=0, wl=0) {
+    $fn = 36;
     color("LightGreen")
-        cube([piBoardWidth, piBoardHeight, piBoardThickness]);
+        difference() {
+            roundedCube(piBoardWidth, piBoardHeight, piBoardThickness, piScrewHoleSafeDiameter/2);
+            translate([piScrewHoleInset, piScrewHoleInset, -0.1])
+                cylinder(d = piScrewHoleDiameter, h = piBoardThickness + 1);
+            translate([piBoardWidth - piScrewHoleInset, piScrewHoleInset, -0.1])
+                cylinder(d = piScrewHoleDiameter, h = piBoardThickness + 1);
+            translate([piScrewHoleInset, piBoardHeight - piScrewHoleInset, -0.1])
+                cylinder(d = piScrewHoleDiameter, h = piBoardThickness + 1);
+            translate([piBoardWidth - piScrewHoleInset, piBoardHeight - piScrewHoleInset, -0.1])
+                cylinder(d = piScrewHoleDiameter, h = piBoardThickness + 1);
+        }
     color("Silver") union() {
         translate([0, 0, piBoardThickness]) {
             translate([piPowerInset-ww, -piPowerStickout-wl, -ww])
@@ -57,4 +70,4 @@ module piModel3APlus(ww=0, wl=0) {
     }
 }
 
-piModel3APlus(ww=2, wl=10);
+//piModel3APlus();

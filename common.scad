@@ -11,10 +11,10 @@ module roundedCube(w, h, d, r, includeZ = false) {
         }
     } else {
         translate([r, r, 0]) minkowski() {
-            cube([ew, eh, d]);
-            cylinder(r=r, h=d);
+            cube([ew, eh, d/2]);
+            cylinder(r=r, h=d/2);
         }
     }
 }
 
-roundedCube(1,2,3,0.1, includeZ=true);
+//roundedCube(1,2,3,0.1, includeZ=true);
