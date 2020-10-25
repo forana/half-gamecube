@@ -14,6 +14,10 @@ fanHoleInset = 1.25;
 pegSlotWidth = 0.8;
 pegSlotDepth = 5;
 
+cardWidth = 15;
+cardHeight = 1.8;
+cardDepth = 1.8;
+
 module fanGrid() {
     // mounting plate
     // frame
@@ -63,11 +67,17 @@ module fanClip() {
     }
 }
 
-module fanPlate(pegs=true) {
-    fanGrid();
+module fanPlate(pegs=false, cardGap=true) {
     if (pegs) {
         fanClip();
     }
+    difference() {
+        fanGrid();
+        if (cardGap) {
+            translate([0.4, -cardDepth, -0.1])
+                cube([cardWidth, cardDepth*2, cardHeight]);
+        }
+    }
 }
 
-color("MediumPurple") fanPlate(pegs=false);
+color("MediumPurple") fanPlate();

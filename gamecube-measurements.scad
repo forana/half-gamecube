@@ -45,5 +45,5 @@ gcHandleHeight = 25 / 2;
 gcHandleRadius = 68 / 2;
 gcHandleDistance = 100 / 2;
 gcHandleStickout = 35 / 2;
-
-//cube([gcWidth, gcHeight, gcDepth]);
+gcHandleInsetX = 21 / 2;// - gcHandleWidth/2;
+gcHandleInsetY = 68 / 2;
