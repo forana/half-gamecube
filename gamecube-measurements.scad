@@ -47,3 +47,5 @@ gcHandleDistance = 100 / 2;
 gcHandleStickout = 35 / 2;
 gcHandleInsetX = 21 / 2;// - gcHandleWidth/2;
 gcHandleInsetY = 68 / 2;
+
+gcButtonDiameter = 16.5/2;
