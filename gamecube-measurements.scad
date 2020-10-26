@@ -48,4 +48,13 @@ gcHandleStickout = 35 / 2;
 gcHandleInsetX = 21 / 2;// - gcHandleWidth/2;
 gcHandleInsetY = 68 / 2;
 
-gcButtonDiameter = 16.5/2;
+gcButtonDiameter = 15.5 / 2;
+
+gcPowerButtonX = 17 / 2;
+gcPowerButtonY = gcHeight - 37 / 2;
+gcResetButtonX = gcPowerButtonX;
+gcResetButtonY = gcHeight - 131 / 2;
+gcOpenButtonX = gcWidth - gcResetButtonX;
+gcOpenButtonY = gcResetButtonY;
+
+gcInlayDiameter = 78 / 2;

@@ -6,6 +6,8 @@ use <fan-plate.scad>
 use <pi-mount.scad>
 use <rear-plate.scad>
 use <handle.scad>
+use <top.scad>
+use <top-disk.scad>
 
 color("MediumPurple") gamecubeBase();
 translate([0, 0, gcBaseDepth]) {
@@ -28,4 +30,9 @@ translate([gcWidth-gcWallThickness, gcHeight, gcRearPlateInsetY])
     rotate([90, 0, 180])
         color("MediumPurple") rearPlate();
 translate([gcWidth/2, gcHeight + 2, gcHandleInsetY])
-    color("Black") handle();
+    color("#333") handle();
+
+translate([0, 0, gcBaseDepth + gcFrontPlateHeight + 0.1])
+    color("MediumPurple") top();
+translate([gcWidth/2, gcHeight/2, gcDepth - 1.5])
+    color("#333") topDisk();
