@@ -1,7 +1,7 @@
 include <gamecube-measurements.scad>
 use <common.scad>
 
-gcTopDepth = gcDepth - gcBaseDepth - gcFrontPlateHeight;
+gcTopDepth = gcDepth - gcBaseDepth - gcFrontPlateHeight - gcBracketThickness;
 cutoutDepth = 0.5;
 buttonSpace = 1;
 topThickness = 1.5;

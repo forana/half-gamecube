@@ -29,6 +29,9 @@ gcFrontPlateHoleDiameter = 14.8;
 gcFrontPlateHoleSpacing = 13;
 gcFrontPlateHoleInsetY = 12.2;
 
+gcFrontPlateInsetWidth = gcFrontPlateWidth - 2*gcMountingPlateSlotWidth;
+gcFrontPlateInsetHeight = gcFrontPlateHeight - 2*gcMountingPlateSlotWidth;
+
 gcMemorySlotWidth = 36;
 gcMemorySlotHeight = 8.45;
 gcMemorySlotDepth = 0.9;
@@ -56,5 +59,7 @@ gcResetButtonX = gcPowerButtonX;
 gcResetButtonY = gcHeight - 131 / 2;
 gcOpenButtonX = gcWidth - gcResetButtonX;
 gcOpenButtonY = gcResetButtonY;
+
+gcBracketThickness = 3;
 
 gcInlayDiameter = 78 / 2;

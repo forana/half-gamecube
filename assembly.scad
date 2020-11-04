@@ -6,6 +6,8 @@ use <fan-plate.scad>
 use <pi-mount.scad>
 use <rear-plate.scad>
 use <handle.scad>
+use <inlay-bracket.scad>
+use <usb-bracket.scad>
 use <top.scad>
 use <top-disk.scad>
 
@@ -32,7 +34,14 @@ translate([gcWidth-gcWallThickness, gcHeight, gcRearPlateInsetY])
 translate([gcWidth/2, gcHeight + 2, gcHandleInsetY])
     color("#333") handle();
 
+translate([gcWidth/2 - gcFrontPlateInsetWidth/2, 2, gcBaseDepth + gcMountingPlateSlotWidth + 0.05])
+    rotate([90, 0, 0])
+        color("#333") usbBracket();
+
 translate([0, 0, gcBaseDepth + gcFrontPlateHeight + 0.1])
+    color("MediumPurple") inlayBracket();
+
+translate([0, 0, gcBaseDepth + gcFrontPlateHeight + gcBracketThickness + 0.1])
     color("MediumPurple") top();
 translate([gcWidth/2, gcHeight/2, gcDepth - 1.5])
     color("#333") topDisk();

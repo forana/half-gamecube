@@ -43,10 +43,33 @@ module rearPlateCutout() {
     }
 }
 
-module pegHole() {
+module pegHole(isHole=true) {
     $fn=64;
     translate([0, 0, -gcMountingPegHeight-hwr])
-        cylinder(d=gcMountingPegDiameter+hwr, h = gcMountingPegHeight*2 + wr);
+        cylinder(d=gcMountingPegDiameter+(isHole ? hwr : -hwr), h = gcMountingPegHeight*2 + wr);
+}
+
+module pegHoles(h = baseHeight, isHole=true) {
+    translate([gcWallThickness/2, gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWallThickness/2, gcHeight/5 - gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWallThickness/2, gcHeight - gcWallThickness/2*3, h])
+        pegHole(isHole);
+    translate([gcWidth - gcWallThickness/2, gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWidth - gcWallThickness/2, gcHeight/5 - gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWidth - gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, h])
+        pegHole(isHole);
+    translate([gcWidth - gcWallThickness/2, gcHeight - gcWallThickness/2*3, h])
+        pegHole(isHole);
+}
+
+module pegs() {
+    pegHoles(h=0, isHole=false);
 }
 
 module gamecubeBase() {
@@ -72,22 +95,7 @@ module gamecubeBase() {
             rotate([90, 0, 0])
                 rearPlateCutout();
         // peg holes
-        translate([gcWallThickness/2, gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWallThickness/2, gcHeight/5 - gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWallThickness/2, gcHeight - gcWallThickness/2*3, baseHeight])
-            pegHole();
-        translate([gcWidth - gcWallThickness/2, gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWidth - gcWallThickness/2, gcHeight/5 - gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWidth - gcWallThickness/2, gcHeight/5*4 - gcWallThickness/2, baseHeight])
-            pegHole();
-        translate([gcWidth - gcWallThickness/2, gcHeight - gcWallThickness/2*3, baseHeight])
-            pegHole();
+        pegHoles();
     }
 }
 
