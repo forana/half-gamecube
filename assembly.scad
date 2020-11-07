@@ -10,6 +10,7 @@ use <inlay-bracket.scad>
 use <usb-bracket.scad>
 use <top.scad>
 use <top-disk.scad>
+use <button.scad>
 
 color("MediumPurple") gamecubeBase();
 translate([0, 0, gcBaseDepth]) {
@@ -45,3 +46,6 @@ translate([0, 0, gcBaseDepth + gcFrontPlateHeight + gcBracketThickness + 0.1])
     color("MediumPurple") top();
 translate([gcWidth/2, gcHeight/2, gcDepth - 1.5])
     color("#333") topDisk();
+translate([gcPowerButtonX, gcPowerButtonY, gcDepth - 1.6])
+    color("LightGray") button();
+    

@@ -1,4 +1,5 @@
 include <gamecube-measurements.scad>
+use <gamecube-base.scad>
 use <common.scad>
 
 gcTopDepth = gcDepth - gcBaseDepth - gcFrontPlateHeight - gcBracketThickness;
@@ -27,8 +28,10 @@ module top() {
             roundedCube(gcWidth, gcHeight, gcTopDepth + gcCaseR, gcCaseR, includeZ=true);
         translate([0, 0, gcTopDepth-cutoutDepth])
             scale([0.5, 0.5, 0.5])
-                linear_extrude(3)
-                    import("top.svg");
+                linear_extrude(3) union() {
+                    import("top-outline.svg");
+                    import("top-led.svg");
+                }
         translate([-1, -1, -gcTopDepth])
             cube([gcWidth*2, gcHeight*2, gcTopDepth]);
         // buttons;
@@ -47,7 +50,12 @@ module top() {
             cylinder(d = gcInlayDiameter + 0.5, h = gcTopDepth * 2);
             cylinder(d = gcInlayDiameter + 20, h = gcTopDepth - topThickness / 2);
         }
+        // rear plate
+        translate([gcWidth/2 - gcRearPlateWidth/2, gcHeight-gcMountingPlateSlotThickness, gcRearPlateInsetY+gcTopDepth-gcDepth+0.1])
+            rotate([90, 0, 0])
+                rearPlateCutout();
     }
+    pegs();
 }
 
 top();
